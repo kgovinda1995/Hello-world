@@ -6,5 +6,8 @@ pipeline{
                 sh 'git clone https://github.com/kgovinda1995/Hello-world.git'
             }
         }
+        stage('maven build'){
+            sh 'mvn clean install'
+        }
     }
 }
