@@ -25,7 +25,7 @@ pipeline{
             agent { label 'docker'}
             steps{
                 sh 'docker build -t hello:1.0 .'
-                sh 'docker create -itd --name hello-world --expose 8080 hello:1.0'
+                sh 'docker create -it --name hello-world --expose 8080 hello:1.0'
             }
         }
     }
