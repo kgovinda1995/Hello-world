@@ -1,5 +1,8 @@
-FROM java:8
-WORKDIR /
-COPY ./HelloWorldMaven-1.1.1-RELEASE.jar HelloWorldMaven-1.1.1-RELEASE.jar
+# Create Custom Docker Image
+FROM tomcat:latest
+
+ 
+
+# copy war file on to container 
+COPY ./ /usr/local/tomcat/webapps/login.war
 EXPOSE 8080
-CMD java - jar HelloWorldMaven-1.1.1-RELEASE.jar
