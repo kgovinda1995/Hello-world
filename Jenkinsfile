@@ -1,5 +1,5 @@
 pipeline{
-    agent {label 'maven'}
+    agent  any
     stages{
         stage('git clone'){
             steps{
@@ -11,5 +11,22 @@ pipeline{
                 sh'mvn clean install'
             }
         }
+        stage('copy build'){
+            steps{
+                sshagent(credentials: ['docker'], ignoreMissing: true) {
+                 sh 'ssh -o StrictHostKeyChecking=no jenkins@172.31.28.16'
+                 sh 'scp  /home/jenkins/workspace/hello-world/target/*.jar jenkins@172.31.28.16:/home/jenkins/workspace/helloworld'
+              }
+            }
+        }
     }
 }
+
+
+
+
+
+
+
+
+https://www.sonarsource.com/products/sonarqube/downloads/success-download-community-edition/
