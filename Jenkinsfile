@@ -20,7 +20,7 @@ pipeline{
               }
             }
         }
-        agent { label 'docker'}
+    agent { label 'docker'}
         stage('Docker'){
             steps{
                 sh 'docker build -t hello:1.0 .'
