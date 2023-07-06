@@ -1,8 +1,8 @@
-# Create Custom Docker Image
-FROM tomcat:latest
+FROM tomcat:8.0-alpine
 
- 
 
-# copy war file on to container 
-COPY ./ /usr/local/tomcat/webapps/login.war
+ADD ./ /usr/local/tomcat/webapps/
+
 EXPOSE 8080
+
+CMD ["catalina.sh", "run"]
