@@ -24,6 +24,8 @@ pipeline{
         stage('Docker'){
             agent { label 'docker'}
             steps{
+                sh 'docker rmi ${docker images -aq}'
+                sh 'docker container rm -f ${docker ps -aq}'
                 sh 'docker build -t hello:1.0 .'
                 sh 'docker container run --name hello-world -d -p 8080:80 hello:1.0'
             }
