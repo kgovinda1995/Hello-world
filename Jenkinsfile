@@ -20,8 +20,9 @@ pipeline{
               }
             }
         }
-    agent { label 'docker'}
+    
         stage('Docker'){
+            agent { label 'docker'}
             steps{
                 sh 'docker build -t hello:1.0 .'
                 sh 'docker run -itd hello -p 8000:80 -i hello:.1.0'
