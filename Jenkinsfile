@@ -3,6 +3,7 @@ def getVersion(){
     return commitHash
 }
 currentBuild.displayName = "my-hello-world-#"+currentBuild.number
+sh "echo \"The current build number is ${BUILD_NUMBER}\""
 pipeline{
     agent  any
     environment {
