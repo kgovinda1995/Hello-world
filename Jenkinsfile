@@ -16,7 +16,7 @@ pipeline{
             steps{
                 sshagent(credentials: ['docker'], ignoreMissing: true) {
                  sh 'ssh -o StrictHostKeyChecking=no jenkins@172.31.28.16'
-                 sh 'scp  /home/jenkins/workspace/hello-world/target/*.jar jenkins@172.31.28.16:/home/jenkins/workspace/hello-world'
+                 sh 'scp  /home/jenkins/workspace/hello-world/target/*.jar jenkins@172.31.28.16:/home/jenkins/workspace/'
               }
             }
         }
@@ -24,7 +24,6 @@ pipeline{
         stage('Docker'){
             agent { label 'docker'}
             steps{
-                sh 'git clone  https://github.com/kgovinda1995/Hello-world.git'
                 sh 'docker rmi ${docker images -aq}'
                 sh 'docker container rm -f ${docker ps -aq}'
                 sh 'docker build -t hello:1.0 .'
