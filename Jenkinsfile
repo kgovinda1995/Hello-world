@@ -1,6 +1,14 @@
+def getVesion(){
+    def commitHash = sh returnStdout: true, script: 'git rev-parse --short HEAD'
+    return commitHash
+}
 currentBuild.displayName = "my-hello-world-#"+currentBuild.number
 pipeline{
     agent  any
+    environment {
+  DOCKER _TAG = "getVesion()"
+}
+
     stages{
         stage('git clone'){
             steps{
