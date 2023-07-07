@@ -21,18 +21,7 @@ pipeline{
                 sh'mvn clean install'
             }
         }
-        stage('copy build'){
-
-            steps{
-
-                sshagent(credentials: ['docker'], ignoreMissing: true) {
-                 sh 'ssh -o StrictHostKeyChecking=no jenkins@172.31.28.16'
-                 sh 'scp  /home/jenkins/workspace/my-project/target/*.jar jenkins@172.31.28.16:/home/jenkins/workspace/'
-              }
-            }
-        }
-           
-    
+        
         stage('Docker'){
             
             steps{
