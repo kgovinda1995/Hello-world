@@ -22,7 +22,9 @@ pipeline{
             }
         }
         stage('copy build'){
+
             steps{
+
                 sshagent(credentials: ['docker'], ignoreMissing: true) {
                  sh 'ssh -o StrictHostKeyChecking=no jenkins@172.31.28.16'
                  sh 'scp  /home/jenkins/workspace/my-project/target/*.jar jenkins@172.31.28.16:/home/jenkins/workspace/'
@@ -34,7 +36,7 @@ pipeline{
         stage('Docker'){
             agent { label 'docker'}
             steps{
-            
+                sh 'rm -rf  my-project@tmp'
                 sh 'docker rmi ${docker images -aq}'
                 sh 'docker container rm -f ${docker ps -aq}'
                 sh 'docker build -t hello:1.0 .'
