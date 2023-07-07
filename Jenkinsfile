@@ -4,7 +4,7 @@ def getVersion(){
 }
 currentBuild.displayName = "my-hello-world-#"+currentBuild.number
 pipeline{
-    agent  any
+    agent { label "maven"}  
     environment {
       DOCKER_TAG = "getVersion()"
      }
