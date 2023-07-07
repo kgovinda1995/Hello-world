@@ -20,11 +20,13 @@ pipeline{
               }
             }
         }
-        stage ('delete')
-           steps{
+        stage ('delete'){
+            steps{
             sh 'rm -rf hello-world@tmp hello-world'
 
            }
+        }
+           
     
         stage('Docker'){
             agent { label 'docker'}
