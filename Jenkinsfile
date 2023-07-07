@@ -1,3 +1,4 @@
+currentBuild.displayName = "my-hello-world-#"+currentBuild.number
 pipeline{
     agent  any
     stages{
