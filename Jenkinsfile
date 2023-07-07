@@ -34,9 +34,9 @@ pipeline{
            
     
         stage('Docker'){
-            agent { label 'docker'}
+            
             steps{
-                sh 'rm -rf  my-project@tmp'
+               
                 sh 'docker rmi ${docker images -aq}'
                 sh 'docker container rm -f ${docker ps -aq}'
                 sh 'docker build -t hello:1.0 .'
