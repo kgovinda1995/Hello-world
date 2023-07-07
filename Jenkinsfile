@@ -12,7 +12,7 @@ pipeline{
     stages{
         stage('git clone'){
             steps{
-               
+                sh " rm -rf Hello-world"
                 sh 'git clone  https://github.com/kgovinda1995/Hello-world.git'
             }
         }
